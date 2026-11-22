@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunities | HelpLink</title>
+    <meta name="description" content="Discover volunteering opportunities in education, healthcare, environment and community support.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Help<span>Link.</span></a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="signup-btn">Join Us</a>
+        </div>
+    </nav>
+</header>
+
+<section class="opportunity-hero">
+    <span>MAKE A DIFFERENCE</span>
+    <h1>Find Your <span>Opportunity.</span></h1>
+    <p>Discover meaningful ways to help people and support your community.</p>
+</section>
+
+<section class="opportunity-section">
+
+    <div class="opportunity-heading">
+        <div>
+            <h2>Explore Opportunities</h2>
+            <p>Find a cause that matches your passion.</p>
+        </div>
+        <span id="result-count">6 opportunities</span>
+    </div>
+
+    <div class="filter-panel">
+
+        <input type="text" id="searchInput"
+            placeholder="Search opportunities...">
+
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Environment">Environment</option>
+            <option value="Food Support">Food Support</option>
+        </select>
+
+        <select id="locationFilter">
+            <option value="all">All Locations</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Shamshabad">Shamshabad</option>
+            <option value="Secunderabad">Secunderabad</option>
+        </select>
+
+        <button id="clearFilters" type="button">Clear Filters</button>
+
+    </div>
+
+    <div class="opportunity-grid" id="opportunityGrid">
+
+        <article class="opportunity-card"
+            data-title="Teach Underprivileged Children"
+            data-category="Education"
+            data-location="Hyderabad">
+
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700"
+                alt="Children learning in a classroom">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Education</span>
+                <h3>Teach Underprivileged Children</h3>
+                <p>Help children improve their basic reading and learning skills.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Hyderabad</span>
+                    <span>⏰ Weekends</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="opportunity-card"
+            data-title="Community Health Awareness"
+            data-category="Healthcare"
+            data-location="Secunderabad">
+
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700"
+                alt="Healthcare professionals">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Healthcare</span>
+                <h3>Community Health Awareness</h3>
+                <p>Support health awareness activities in local communities.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Secunderabad</span>
+                    <span>⏰ Flexible</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="opportunity-card"
+            data-title="Tree Plantation Drive"
+            data-category="Environment"
+            data-location="Shamshabad">
+
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=700"
+                alt="Green trees and environment">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Environment</span>
+                <h3>Tree Plantation Drive</h3>
+                <p>Join a community initiative to plant trees and protect nature.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Shamshabad</span>
+                    <span>⏰ Sunday</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="opportunity-card"
+            data-title="Food Distribution Program"
+            data-category="Food Support"
+            data-location="Hyderabad">
+
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=700"
+                alt="Community food distribution">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Food Support</span>
+                <h3>Food Distribution Program</h3>
+                <p>Help distribute meals to people who need food assistance.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Hyderabad</span>
+                    <span>⏰ Saturday</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="opportunity-card"
+            data-title="Digital Literacy Training"
+            data-category="Education"
+            data-location="Secunderabad">
+
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700"
+                alt="Digital learning">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Education</span>
+                <h3>Digital Literacy Training</h3>
+                <p>Teach basic computer and internet skills to beginners.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Secunderabad</span>
+                    <span>⏰ Weekdays</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="opportunity-card"
+            data-title="Neighborhood Clean-up"
+            data-category="Environment"
+            data-location="Shamshabad">
+
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=700"
+                alt="Community cleaning activity">
+
+            <div class="opportunity-info">
+                <span class="opportunity-category">Environment</span>
+                <h3>Neighborhood Clean-up</h3>
+                <p>Work together to make public spaces cleaner and healthier.</p>
+                <div class="opportunity-meta">
+                    <span>📍 Shamshabad</span>
+                    <span>⏰ Weekends</span>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <p id="noResults" class="no-results" hidden>
+        No opportunities found. Try changing your filters.
+    </p>
+
+</section>
+
+<section class="cta">
+    <h2>Have an Organization?</h2>
+    <p>Register your NGO and share volunteering opportunities with our community.</p>
+    <a href="register.html" class="primary-btn">Join as an Organization →</a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h2 class="logo">Help<span>Link.</span></h2>
+            <p>Connecting people. Empowering communities.</p>
+        </div>
+        <div>
+            <h4>Explore</h4>
+            <a href="about.html">About Us</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div>
+            <h4>Account</h4>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 HelpLink. All rights reserved.
+    </div>
+</footer>
+
+<script src="js/opportunities.js"></script>
+
+<footer class="site-footer">
+    <p>© 2026 HelpLink. All Rights Reserved.</p>
+    <p>Connecting People. Creating Impact.</p>
+</footer>
+
+<button id="backToTop"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑ Back to Top
+</button>
+
+</body>
+</html>
