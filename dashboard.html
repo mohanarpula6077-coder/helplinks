@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpLink - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        #dashboardContent {
+            display: none;
+        }
+
+        #joinedList p,
+        #registeredEvents p {
+            background: #ffffff;
+            color: #176b55;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #176b55;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        #joinedList,
+        #registeredEvents {
+            color: #173f35;
+        }
+
+        .joined-section h2 {
+            color: #ffffff;
+        }
+
+        .profile-avatar img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="loadingMessage" style="text-align:center; padding:50px;">
+    Checking your account...
+</div>
+
+<div id="dashboardContent">
+
+    <header>
+        <h1>HelpLink Dashboard</h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" id="logoutButton">Logout</a>
+        </nav>
+
+        <a href="#myActivity">My Activity</a>
+    </header>
+
+    <main>
+
+        <section class="joined-section">
+            <h2 id="myActivity">My Joined Opportunities</h2>
+            <div id="joinedList">No opportunities joined yet.</div>
+        </section>
+
+        <section>
+            <h2 id="welcomeMessage">Welcome!</h2>
+            <p id="currentDateTime"></p>
+            <p>Make a difference. Volunteer. Help your community.</p>
+        </section>
+
+        <section>
+            <h2>Your Dashboard</h2>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3 id="opportunityCount">0</h3>
+                    <p>Opportunities Joined</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="eventCount">0</h3>
+                    <p>Events Registered</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3 id="activityCount">0</h3>
+                    <p>Total Activities</p>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <h3>My Volunteer Activity</h3>
+                <p>Volunteer Activities: <strong id="activityOpportunityCount">0</strong></p>
+                <p>Events Joined: <strong id="activityEventCount">0</strong></p>
+                <p>Hours Contributed: <strong>0</strong></p>
+                <p class="activity-note">Your volunteering journey starts here!</p>
+            </div>
+
+            <div class="profile-card">
+                <h3>My Profile</h3>
+
+                <div class="profile-avatar">
+                    <img id="profilePreview" alt="Profile Photo" style="display:none;">
+                </div>
+
+                <input
+                    type="file"
+                    id="profileImageInput"
+                    accept="image/*"
+                >
+
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+
+                <button type="button" id="editProfileButton">Edit Profile</button>
+            </div>
+
+            <div>
+                <h3>Explore Opportunities</h3>
+                <p>Find volunteering opportunities near you.</p>
+                <a href="opportunities.html">Explore Now</a>
+            </div>
+
+            <div>
+                <h3>Upcoming Events</h3>
+                <p>Discover community events and activities.</p>
+                <a href="events.html">View Events</a>
+            </div>
+
+            <div>
+                <h3>About HelpLink</h3>
+                <p>Learn how HelpLink connects volunteers with communities.</p>
+                <a href="about.html">Learn More</a>
+            </div>
+
+        </section>
+
+        <section class="joined-section">
+            <h2>My Registered Events</h2>
+            <div id="registeredEvents">No events registered yet.</div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 HelpLink. All Rights Reserved.</p>
+        <p>Connecting People. Creating Impact.</p>
+    </footer>
+
+    <button id="backToTop"
+        onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑ Back to Top
+    </button>
+
+</div>
+
+<script type="module">
+import { auth } from "./js/firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    signOut,
+    updateProfile
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+const loadingMessage = document.getElementById("loadingMessage");
+const dashboardContent = document.getElementById("dashboardContent");
+
+// Check Firebase login
+onAuthStateChanged(auth, function(user) {
+
+    if (!user) {
+        window.location.replace("login.html");
+        return;
+    }
+
+    loadingMessage.style.display = "none";
+    dashboardContent.style.display = "block";
+
+    loadDashboard(user);
+});
+
+function loadDashboard(user) {
+
+    // Load profile
+    const savedUser = JSON.parse(
+        localStorage.getItem("helpLinkUser") || "null"
+    );
+
+    const phone = savedUser && savedUser.email === user.email
+        ? savedUser.phone || ""
+        : "";
+
+    const name = user.displayName || "Volunteer";
+
+    document.getElementById("welcomeMessage").textContent =
+        "Welcome, " + name + "!";
+
+    document.getElementById("profileName").textContent = name;
+    document.getElementById("profileEmail").textContent =
+        user.email || "";
+
+    document.getElementById("profilePhone").textContent = phone;
+
+    // Load joined opportunities
+    const joined = JSON.parse(
+        localStorage.getItem("joinedOpportunities") || "[]"
+    );
+
+    const joinedList = document.getElementById("joinedList");
+
+    if (joined.length > 0) {
+        joinedList.innerHTML = "";
+
+        joined.forEach(function(title) {
+            const item = document.createElement("p");
+            item.textContent = "✓ " + title;
+            joinedList.appendChild(item);
+        });
+    }
+
+    // Load registered events
+    const events = JSON.parse(
+        localStorage.getItem("joinedEvents") || "[]"
+    );
+
+    const registeredEvents =
+        document.getElementById("registeredEvents");
+
+    if (events.length > 0) {
+        registeredEvents.innerHTML = "";
+
+        events.forEach(function(title) {
+            const item = document.createElement("p");
+            item.textContent = "✓ " + title;
+            registeredEvents.appendChild(item);
+        });
+    }
+
+    // Update statistics
+    document.getElementById("opportunityCount").textContent =
+        joined.length;
+
+    document.getElementById("eventCount").textContent =
+        events.length;
+
+    document.getElementById("activityCount").textContent =
+        joined.length + events.length;
+
+    document.getElementById("activityOpportunityCount").textContent =
+        joined.length;
+
+    document.getElementById("activityEventCount").textContent =
+        events.length;
+
+    // Edit profile
+    document.getElementById("editProfileButton")
+        .addEventListener("click", async function() {
+
+            const newName = prompt(
+                "Enter your new name:",
+                user.displayName || ""
+            );
+
+            if (newName === null || newName.trim() === "") {
+                return;
+            }
+
+            const newPhone = prompt(
+                "Enter your new phone number:",
+                phone
+            );
+
+            if (newPhone === null ||
+                !/^[6-9][0-9]{9}$/.test(newPhone.trim())) {
+
+                alert("Enter a valid 10-digit phone number!");
+                return;
+            }
+
+            try {
+                await updateProfile(user, {
+                    displayName: newName.trim()
+                });
+
+                localStorage.setItem("helpLinkUser", JSON.stringify({
+                    name: newName.trim(),
+                    email: user.email,
+                    phone: newPhone.trim()
+                }));
+
+                document.getElementById("welcomeMessage").textContent =
+                    "Welcome, " + newName.trim() + "!";
+
+                document.getElementById("profileName").textContent =
+                    newName.trim();
+
+                document.getElementById("profilePhone").textContent =
+                    newPhone.trim();
+
+                alert("Profile updated successfully!");
+
+            } catch (error) {
+                alert("Unable to update profile. Please try again.");
+                console.error(error);
+            }
+        });
+
+    // Date and time
+    function updateDateTime() {
+        document.getElementById("currentDateTime").textContent =
+            new Date().toLocaleString();
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    // Restore saved profile photo
+    const savedImage = localStorage.getItem("profileImage");
+    const profileImg = document.getElementById("profilePreview");
+
+    if (savedImage) {
+        profileImg.src = savedImage;
+        profileImg.style.display = "block";
+    }
+
+    // Profile photo upload and compression
+    document.getElementById("profileImageInput")
+        .addEventListener("change", function(event) {
+
+            const file = event.target.files[0];
+
+            if (!file || !file.type.startsWith("image/")) {
+                alert("Please select a valid image.");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const photo = new Image();
+
+                photo.onload = function() {
+                    const canvas = document.createElement("canvas");
+
+                    let width = photo.width;
+                    let height = photo.height;
+                    const maxSize = 800;
+
+                    if (width > maxSize || height > maxSize) {
+                        const scale = Math.min(
+                            maxSize / width,
+                            maxSize / height
+                        );
+
+                        width = Math.round(width * scale);
+                        height = Math.round(height * scale);
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const context = canvas.getContext("2d");
+                    context.drawImage(photo, 0, 0, width, height);
+
+                    const compressedPhoto =
+                        canvas.toDataURL("image/jpeg", 0.75);
+
+                    profileImg.src = compressedPhoto;
+                    profileImg.style.display = "block";
+
+                    try {
+                        localStorage.setItem(
+                            "profileImage",
+                            compressedPhoto
+                        );
+                    } catch (error) {
+                        alert("Photo displayed, but browser storage is full.");
+                    }
+                };
+
+                photo.onerror = function() {
+                    alert("Unable to read this image.");
+                };
+
+                photo.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+    // Firebase logout
+    document.getElementById("logoutButton")
+        .addEventListener("click", async function(event) {
+
+            event.preventDefault();
+
+            try {
+                await signOut(auth);
+                localStorage.removeItem("helpLinkLoggedIn");
+                window.location.replace("login.html");
+
+            } catch (error) {
+                alert("Unable to log out. Please try again.");
+                console.error(error);
+            }
+        });
+}
+</script>
+
+</body>
+</html>

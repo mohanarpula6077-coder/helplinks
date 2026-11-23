@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events & Campaigns | HelpLink</title>
+
+    <meta name="description" content="Discover community events, social campaigns and volunteering activities with HelpLink.">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Help<span>Link.</span></a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="signup-btn">Join Us</a>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="events-hero">
+    <span>BE PART OF SOMETHING GOOD</span>
+
+    <h1>Events That <span>Bring Change.</span></h1>
+
+    <p>
+        Discover community events, join campaigns and
+        make meaningful memories while helping others.
+    </p>
+
+    <a href="#events" class="primary-btn">Explore Events ↓</a>
+</section>
+
+<!-- FEATURED EVENT -->
+<section class="featured-event">
+
+    <div class="featured-image">
+        <img
+            src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=900"
+            alt="Community volunteers working together">
+    </div>
+
+    <div class="featured-content">
+        <span class="featured-tag">FEATURED CAMPAIGN</span>
+
+        <h2>Stronger Communities Start With Us</h2>
+
+        <p>
+            Bring people together through community service,
+            teamwork and meaningful volunteer activities.
+        </p>
+
+        <a href="register.html" class="primary-btn">
+            Join the Community →
+        </a>
+    </div>
+
+</section>
+
+<!-- EVENTS -->
+<section class="events-section" id="events">
+
+    <div class="section-heading">
+        <span>DISCOVER & PARTICIPATE</span>
+        <h2>Upcoming Events</h2>
+        <p>Find an event that matches your passion.</p>
+    </div>
+
+    <!-- SEARCH AND FILTER -->
+    <div class="event-filter">
+
+        <input
+            type="text"
+            id="eventSearch"
+            placeholder="Search events...">
+
+        <select id="eventCategory">
+            <option value="all">All Categories</option>
+            <option value="Environment">Environment</option>
+            <option value="Education">Education</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Community">Community</option>
+        </select>
+
+    </div>
+
+    <!-- EVENT CARDS -->
+    <div class="events-grid" id="eventsGrid">
+
+        <article class="event-card"
+            data-name="Green Earth Plantation Drive"
+            data-category="Environment">
+
+            <img
+                src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=700"
+                alt="Tree plantation campaign">
+
+            <div class="event-info">
+                <span class="event-category">Environment</span>
+
+                <h3>Green Earth Plantation Drive</h3>
+
+                <p>
+                    Join volunteers to plant trees and promote
+                    environmental awareness.
+                </p>
+
+                <div class="event-details">
+                    <span>📅 15 December 2026</span>
+                    <span>📍 Hyderabad</span>
+                </div>
+
+                <a href="register.html" class="event-btn">
+                    Register Interest →
+                </a>
+            </div>
+        </article>
+
+        <article class="event-card"
+            data-name="Education for Everyone"
+            data-category="Education">
+
+            <img
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700"
+                alt="Education support event">
+
+            <div class="event-info">
+                <span class="event-category">Education</span>
+
+                <h3>Education for Everyone</h3>
+
+                <p>
+                    Support learning activities and educational
+                    resources for children.
+                </p>
+
+                <div class="event-details">
+                    <span>📅 20 December 2026</span>
+                    <span>📍 Shamshabad</span>
+                </div>
+
+                <a href="register.html" class="event-btn">
+                    Register Interest →
+                </a>
+            </div>
+        </article>
+
+        <article class="event-card"
+            data-name="Community Health Awareness"
+            data-category="Healthcare">
+
+            <img
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700"
+                alt="Healthcare awareness event">
+
+            <div class="event-info">
+                <span class="event-category">Healthcare</span>
+
+                <h3>Community Health Awareness</h3>
+
+                <p>
+                    Help spread awareness about healthy living
+                    and community care.
+                </p>
+
+                <div class="event-details">
+                    <span>📅 25 December 2026</span>
+                    <span>📍 Secunderabad</span>
+                </div>
+
+                <a href="register.html" class="event-btn">
+                    Register Interest →
+                </a>
+            </div>
+        </article>
+
+        <article class="event-card"
+            data-name="Food for All Campaign"
+            data-category="Community">
+
+            <img
+                src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=700"
+                alt="Food distribution activity">
+
+            <div class="event-info">
+                <span class="event-category">Community</span>
+
+                <h3>Food for All Campaign</h3>
+
+                <p>
+                    Work with volunteers to support food
+                    distribution initiatives.
+                </p>
+
+                <div class="event-details">
+                    <span>📅 28 December 2026</span>
+                    <span>📍 Hyderabad</span>
+                </div>
+
+                <a href="register.html" class="event-btn">
+                    Register Interest →
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+    <p id="eventNoResults" class="no-results" hidden>
+        No events found. Try another search.
+    </p>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>Want to Organize an Event?</h2>
+
+    <p>
+        Bring your ideas to life and invite volunteers
+        to support your cause.
+    </p>
+
+    <a href="register.html" class="primary-btn">
+        Join as an Organization →
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+
+        <div>
+            <h2 class="logo">Help<span>Link.</span></h2>
+            <p>Connecting people. Empowering communities.</p>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <a href="about.html">About Us</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+        </div>
+
+        <div>
+            <h4>Account</h4>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 HelpLink. All rights reserved.
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backToTop"
+    onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑ Back to Top
+</button>
+
+<!-- EVENT REGISTRATION SCRIPT -->
+<script src="js/app.js"></script>
+
+<!-- EVENT SEARCH AND FILTER -->
+<script>
+const eventSearch = document.getElementById("eventSearch");
+const eventCategory = document.getElementById("eventCategory");
+const eventCards = document.querySelectorAll(".event-card");
+const eventNoResults = document.getElementById("eventNoResults");
+
+function filterEvents() {
+
+    const search = eventSearch.value.toLowerCase().trim();
+    const category = eventCategory.value;
+
+    let count = 0;
+
+    eventCards.forEach(card => {
+
+        const name = card.dataset.name.toLowerCase();
+        const type = card.dataset.category;
+
+        const matchesSearch = name.includes(search);
+        const matchesCategory =
+            category === "all" || type === category;
+
+        const visible = matchesSearch && matchesCategory;
+
+        card.style.display = visible ? "block" : "none";
+
+        if (visible) {
+            count++;
+        }
+
+    });
+
+    eventNoResults.hidden = count !== 0;
+}
+
+eventSearch.addEventListener("input", filterEvents);
+eventCategory.addEventListener("change", filterEvents);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpLink | Sign In</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            display: flex;
+            flex-direction: column;
+            color: #202124;
+        }
+
+        .login-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 45px 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            padding: 45px 42px;
+            border: 1px solid #e5e9f0;
+            border-radius: 18px;
+            box-shadow: 0 8px 35px rgba(30, 50, 80, 0.07);
+        }
+
+        .brand {
+            text-align: center;
+            font-size: 29px;
+            font-weight: 800;
+            color: #1768a5;
+            letter-spacing: -1px;
+            margin-bottom: 28px;
+        }
+
+        .brand span {
+            color: #102b55;
+        }
+
+        .login-right h2 {
+            text-align: center;
+            font-size: 27px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #707985;
+            margin-bottom: 32px;
+        }
+
+        #loginForm label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #34445c;
+            margin-bottom: 9px;
+        }
+
+        #loginForm input {
+            display: block;
+            width: 100%;
+            height: 49px;
+            padding: 0 14px;
+            border: 1px solid #d8dee8;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            margin-bottom: 22px;
+            transition: 0.2s;
+            background: #ffffff;
+        }
+
+        #loginForm input:focus {
+            border-color: #1768a5;
+            box-shadow: 0 0 0 3px rgba(23, 104, 165, 0.10);
+        }
+
+        #loginForm button {
+            width: 100%;
+            height: 49px;
+            border: none;
+            border-radius: 8px;
+            background: #1768a5;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #loginForm button:hover {
+            background: #102b55;
+        }
+
+        #loginStatus {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 13px;
+        }
+
+        .forgot-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-text a {
+            color: #1768a5;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .forgot-text a:hover {
+            text-decoration: underline;
+        }
+
+        .register-text {
+            text-align: center;
+            margin-top: 27px;
+            padding-top: 22px;
+            border-top: 1px solid #edf0f4;
+            color: #707985;
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #1768a5;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 20px;
+            color: #87909e;
+            font-size: 12px;
+        }
+
+        .site-footer p {
+            margin: 5px;
+        }
+
+        #backToTop {
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 38px 25px;
+            }
+
+            .login-wrapper {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="login-wrapper">
+        <div class="login-container">
+
+            <div class="brand">
+                Help<span>Link.</span>
+            </div>
+
+            <section class="login-right">
+
+                <h2>Welcome Back</h2>
+
+                <p class="subtitle">
+                    Sign in to continue to your HelpLink account.
+                </p>
+
+                <form id="loginForm">
+
+                    <label for="loginEmail">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <label for="loginPassword">Password</label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button type="submit">
+                        Sign In
+                    </button>
+
+                    <p id="loginStatus"></p>
+
+                </form>
+
+                <p class="forgot-text">
+                    <a href="forgot-password.html">
+                        Forgot password?
+                    </a>
+                </p>
+
+                <p class="register-text">
+                    Don't have an account?
+                    <a href="register.html">Create an account</a>
+                </p>
+
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 HelpLink. All Rights Reserved.</p>
+        <p>Connecting People. Creating Impact.</p>
+    </footer>
+
+    <script type="module" src="js/login.js"></script>
+
+</body>
+</html>

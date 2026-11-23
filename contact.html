@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | HelpLink</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Help<span>Link.</span></a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="signup-btn">Join Us</a>
+        </div>
+    </nav>
+</header>
+
+<section class="contact-hero">
+    <span>WE ARE HERE TO HELP</span>
+    <h1>Let's Start a <span>Conversation.</span></h1>
+    <p>Have questions, ideas or want to work with us? We'd love to hear from you.</p>
+</section>
+
+<section class="contact-section">
+
+    <div class="contact-info">
+
+        <span class="contact-label">GET IN TOUCH</span>
+        <h2>We'd Love to Hear From You.</h2>
+
+        <p>
+            Whether you are a volunteer, NGO or someone who
+            wants to create change, feel free to contact us.
+        </p>
+
+        <div class="contact-detail">
+            <div>📧</div>
+            <section>
+                <h3>Email</h3>
+                <p>support@helplink.org</p>
+            </section>
+        </div>
+
+        <div class="contact-detail">
+            <div>📍</div>
+            <section>
+                <h3>Location</h3>
+                <p>Hyderabad, Telangana, India</p>
+            </section>
+        </div>
+
+        <div class="contact-detail">
+            <div>🤝</div>
+            <section>
+                <h3>Community Support</h3>
+                <p>We're here to help volunteers and organizations.</p>
+            </section>
+        </div>
+
+    </div>
+
+    <div class="contact-form-container">
+
+        <h2>Send Us a Message</h2>
+        <p>Fill in the details below.</p>
+
+        <form id="contactForm">
+
+            <label for="contactName">Full Name</label>
+            <input type="text" id="contactName"
+                   placeholder="Enter your name" required>
+
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail"
+                   placeholder="Enter your email" required>
+
+            <label for="contactSubject">Subject</label>
+            <select id="contactSubject" required>
+                <option value="">Choose a subject</option>
+                <option>Volunteer Support</option>
+                <option>NGO Partnership</option>
+                <option>Event Enquiry</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+            </select>
+
+            <label for="contactMessage">Your Message</label>
+            <textarea id="contactMessage"
+                      rows="5"
+                      placeholder="Write your message..."
+                      required></textarea>
+
+            <button type="submit" class="send-message-btn">
+                Send Message →
+            </button>
+
+            <p id="contactStatus" role="status"></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section class="cta">
+    <h2>Together We Can Make a Difference.</h2>
+    <p>Your next step could change someone's life.</p>
+    <a href="register.html" class="primary-btn">Join HelpLink →</a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h2 class="logo">Help<span>Link.</span></h2>
+            <p>Connecting people. Empowering communities.</p>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <a href="about.html">About Us</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="events.html">Events</a>
+        </div>
+
+        <div>
+            <h4>Account</h4>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 HelpLink. All rights reserved.
+    </div>
+</footer>
+
+<script src="js/app.js"></script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("contactStatus").textContent =
+        "Thank you! Your message is ready. We'll connect this form to the database later.";
+
+    this.reset();
+});
+</script>
+<footer class="site-footer">
+    <p>© 2026 HelpLink. All Rights Reserved.</p>
+    <p>Connecting People. Creating Impact.</p>
+</footer>
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑ Back to Top
+</button>
+</body>
+</html>
